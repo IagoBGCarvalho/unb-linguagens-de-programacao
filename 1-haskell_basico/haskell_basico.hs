@@ -1,3 +1,4 @@
+import Control.Arrow (Arrow(first, second))
 -- Para rodar um arquivo Haskell:
 -- 1 - Abrir o terminal do VS Code
 -- 2 - Digitar "ghci" para iniciar o ambiente interativo da linguagem
@@ -74,6 +75,56 @@ myAnd False x = False
 myAnd True  x = x
 
 -- Exercícios:
--- makeSpaces :: Int -> String
--- makeSpaces n | (n == 0) = ""
---              | (n > 0)  = chr n 
+makeSpaces :: Int -> String
+makeSpaces n | (n == 0) = ""
+             | (n > 0)  = " " ++ makeSpaces(n - 1)
+
+pushRight :: Int -> String -> String
+pushRight n s = (makeSpaces n) ++ s
+
+-- Float e Double
+-- 22.3435 :: Float
+-- +,-,*,/ :: Float -> Float -> Float
+-- pi :: Float
+-- ceiling, floor, round :: Float -> Int
+-- fromIntegral :: Int -> Float
+
+-- Tuplas
+-- intP :: (Int, Int)
+-- intP = (33,43)
+-- (True, ’x’) :: (Bool, Char)
+-- (34, 22,’b’) :: (Int, Int, Char)
+-- addPair :: (Int,Int) -> Int
+-- addPair (x,y) = x+y
+-- shift :: ((Int,Int),Int) -> (Int,(Int,Int))
+-- shift ((x,y),z) = (x,(y,z))
+
+-- Tipos
+type Name = String
+type Age = Int
+type Phone = Int
+type Person = (Name, Age, Phone)
+name :: Person -> Name
+name (n,a,p) = n
+
+-- Definições locais
+-- Estilo bottom-up ou top-down
+-- sumSquares :: Int -> Int -> Int
+-- sumSquares x y = sqX + sqY
+--     where sqX = x * x 
+--     sqY = y * y
+
+-- sumSquares x y = sq x + sq y
+--     where sq z = z * z
+
+-- sumSquares x y = let sqX = x * x
+--     sqY = y * y
+--     in sqX + sqY
+
+-- Notação
+-- f n + 1 (funções tem mais precedência do que a soma)
+-- f (n + 1) (função aplicada ao resultado da soma)
+-- 2 + 3 
+-- (+) 2 3 (operador prefixado, primeiro vem a operação e depois os argumentos)
+-- maxi 2 4
+-- 2 ‘maxi‘ 4
