@@ -133,6 +133,7 @@ books :: Database -> Person -> [Book]
 books [] _ = []
 books ((p,b):pbs) per | p == per = b:books pbs per
                       | otherwise = books pbs per
+books db per = [l | (p,l) <- db, p == per] -- outra forma de fazer o que está acima
 
 -- Retorna as pessoas que pegaram um mesmo livrso
 borrowers :: Database -> Book -> [Person]
